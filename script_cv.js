@@ -47,14 +47,14 @@ const getCompEngEssCid = async () => {
   )
     .then((response) => response.json())
     .then((data) => {
-      console.log(data.student);
-      for (index = 0; index < data.student.length; index++)
+      console.log(data);
+      data.data.student.forEach(checkFunction)
+      function checkFunction(item, index)
       {
-          if(data.student[index].course_no == "2110221")
-          {
-            document.getElementById("ces-cid-value").innerHTML = "";
-            break;
-          }
+        if(item.course_no == "2110221")
+        {
+          document.getElementById("ces-cid-value").innerHTML = item.cv_cid;
+        }
       }
     })
     .catch((error) => console.error(error));
